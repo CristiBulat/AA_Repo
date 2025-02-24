@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 
 matplotlib.use("TkAgg")
 
+
 def heapify(arr, n, i):
     largest = i
     left = 2 * i + 1
@@ -34,18 +35,17 @@ def heap_sort(arr):
         heapify(arr, i, 0)
 
 
-# Function to test Heap Sort with different cases
 def test_heap_sort(name, dataset):
     arr = dataset.copy()
 
-    tracemalloc.start()  # Start memory tracking
-    start_time = time.time()  # Start time
+    tracemalloc.start()
+    start_time = time.time()
 
     heap_sort(arr)
 
-    end_time = time.time()  # End time
-    memory_used = tracemalloc.get_traced_memory()[1]  # Peak memory usage
-    tracemalloc.stop()  # Stop memory tracking
+    end_time = time.time()
+    memory_used = tracemalloc.get_traced_memory()[1]
+    tracemalloc.stop()
 
     return {"Dataset": name, "Time (s)": round(end_time - start_time, 6), "Memory (KB)": round(memory_used / 1024, 3)}
 
